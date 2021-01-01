@@ -8,6 +8,10 @@ function half(num: number): number {
     return Math.ceil(num / 2 / 10) * 10;
 }
 
+function sum(numbers: number[]): number {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
 function calcTotalFare(normalFare: number, passengers: string[]): number {
     const halfFare = half(normalFare);
     const halfFare2 = half(halfFare);
@@ -25,10 +29,7 @@ function calcTotalFare(normalFare: number, passengers: string[]): number {
         infantFares.shift();
     }
 
-    let totalFare = adultFares.reduce((total, fare) => total + fare, 0);
-    totalFare = childrenFares.reduce((total, fare) => total + fare, totalFare);
-    totalFare = infantFares.reduce((total, fare) => total + fare, totalFare);
-    return totalFare;
+    return sum(adultFares) + sum(childrenFares) + sum(infantFares);
 }
 
 function test(input: string, expected: string) {
