@@ -1,3 +1,9 @@
+// 大貧民 〜 横へな 2012.11.9
+// http://nabetani.sakura.ne.jp/hena/ord5dahimi/
+
+// 実行方法
+// tsc q5.ts --lib es2017,dom && node q5.js
+
 function split(text: string): string[] {
     const result: string[] = [];
     for (let i = 0; i < text.length; i += 2) {
