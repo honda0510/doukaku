@@ -12,7 +12,7 @@ function split(text: string): string[] {
     return result;
 }
 
-function isJoker(card): boolean {
+function isJoker(card: string): boolean {
     return card === 'Jo';
 }
 
@@ -57,7 +57,6 @@ function filter(groups: string[]): string[] {
         const cardsText = cards.sort().join('');
         if (!_results.includes(cardsText)) {
             _results.push(cardsText);
-            
         }
         return _results;
     }, []);
@@ -71,7 +70,6 @@ function play(openText: string, stockText: string): string {
         : openCards.filter(card => !isJoker(card)).map(rank);
     const openRank = Math.max(...ranks);
     const stockCards = split(stockText);
-
     const candidates = stockCards.filter(card => rank(card) > openRank);
     const groups = combine(candidates, candidates, openNum);
     const result = filter(groups);
