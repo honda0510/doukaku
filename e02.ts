@@ -137,9 +137,11 @@ function test(input: string, expected: string) {
     }
 }
 
-// const result = combine('ABCDEJGHIJKML'.split(''), 4);
-// console.log(result);
 console.log(new Date().toTimeString());
+// const result = combine('Ic,Dk,Ef,6R,GK,NZ,76,L0,oQ,9f,S3,oL,lX,7v,8d,pX,dZ,z7,zx,fR,pe,w7,aj,U9,lO,kv,wL,s0'.split(','), 9);
+// const result = combine('JJ,LR,Xe,kg,LU,lI,3w,ZV,Td,Mu,tA,g8,VC,I7,N8,zN,kY,Ux,3t,mg,4m,FO,Ug,vQ,qY,jl,Ne,Zq,GN'.split(','), 10);
+// const result = combine('lQ,EN,vO,tn,qO,F3,9k,K2,UC,P0,XY,DB,QO,ps,hy,fl,Dt,ex,Vc,vF,Pf,Vk,uo,Xc,Sh,KE,9g,3H,l6'.split(','), 11);
+// console.log(result.length);
 /*0*/ test( "3:Oh,Be,AF,in,eG,ir,l5,Q8,mC,7T,Ty,tT", "108,1920" );
 /*1*/ test( "3:00,zz,0z,z0", "-" );
 /*2*/ test( "1:ho", "1,3844" );
