@@ -2,7 +2,7 @@
 // http://nabetani.sakura.ne.jp/hena/orde02pire/
 
 // 実行方法
-// tsc e2.ts --target es2019 --lib es2019,dom && node --max-old-space-size=16384 e2.js
+// tsc e02.ts --target es2019 --lib es2019,dom && node --max-old-space-size=16384 e02.js
 
 const ALNUMS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
