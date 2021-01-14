@@ -2,7 +2,7 @@
 // http://nabetani.sakura.ne.jp/hena/orde02pire/
 
 // 実行方法
-// tsc e02.ts --target es2019 --lib es2019,dom && node --max-old-space-size=16384 e02.js
+// tsc e02.ts --target es2019 --lib es2019,dom && node --max-old-space-size=8192 e02.js
 
 const ALNUMS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
@@ -70,22 +70,52 @@ class Rect {
     }
 }
 
+// function combine(list: string[], n: number): string[][] {
+//     if (list.length < n) {
+//         return [];
+//     }
+//     if (n < 2) {
+//         return list.map(v => [v]);
+//     }
+
+//     return list.reduce((results, head, i) => {
+//         const tails = combine(list.slice(i + 1), n - 1);
+//         tails.forEach(tail => {
+//             tail.unshift(head);
+//             results.push(tail);
+//         });
+//         return results;
+//     }, []);
+// }
+
 function combine(list: string[], n: number): string[][] {
-    if (list.length < n) {
-        return [];
+    const len = list.length;
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < n; i++) {
+        indexes.push(i);
     }
-    if (n < 2) {
-        return list.map(v => [v]);
+    const lastPos = n - 1;
+
+    while (indexes[0] + n <= len) {
+        while (indexes[lastPos] < len) {
+            result.push(indexes.map(i => list[i]));
+            indexes[lastPos]++;
+        }
+
+        for (let pos = lastPos - 1; pos >= 0; pos--) {
+            indexes[pos]++;
+            const lastIdx = indexes[pos] + (lastPos - pos);
+            if (lastIdx < len) {
+                for (; pos + 1 < n; pos++) {
+                    indexes[pos + 1] = indexes[pos] + 1;
+                }
+                break;
+            }
+        }
     }
 
-    return list.reduce((results, head, i) => {
-        const tails = combine(list.slice(i + 1), n - 1);
-        tails.forEach(tail => {
-            tail.unshift(head);
-            results.push(tail);
-        });
-        return results;
-    }, []);
+    return result;
 }
 
 function alnumToCoordinate(alnum: string): Coordinate {
@@ -138,6 +168,8 @@ function test(input: string, expected: string) {
 }
 
 console.log(new Date().toTimeString());
+// const result = combine('ABCDEF'.split(''), 4);
+// console.log(result);
 // const result = combine('Ic,Dk,Ef,6R,GK,NZ,76,L0,oQ,9f,S3,oL,lX,7v,8d,pX,dZ,z7,zx,fR,pe,w7,aj,U9,lO,kv,wL,s0'.split(','), 9);
 // const result = combine('JJ,LR,Xe,kg,LU,lI,3w,ZV,Td,Mu,tA,g8,VC,I7,N8,zN,kY,Ux,3t,mg,4m,FO,Ug,vQ,qY,jl,Ne,Zq,GN'.split(','), 10);
 // const result = combine('lQ,EN,vO,tn,qO,F3,9k,K2,UC,P0,XY,DB,QO,ps,hy,fl,Dt,ex,Vc,vF,Pf,Vk,uo,Xc,Sh,KE,9g,3H,l6'.split(','), 11);
