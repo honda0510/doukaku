@@ -2,7 +2,7 @@
 // http://nabetani.sakura.ne.jp/hena/orde02pire/
 
 // 実行方法
-// tsc e02.ts --target es2019 --lib es2019,dom && node --max-old-space-size=8192 e02.js
+// tsc e02.ts --target es2019 --lib es2019,dom && node e02.js
 
 const ALNUMS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
@@ -88,9 +88,8 @@ class Rect {
 //     }, []);
 // }
 
-function combine(list: string[], n: number): string[][] {
+function* combine(list: string[], n: number) {
     const len = list.length;
-    const result = [];
     const indexes = [];
     for (let i = 0; i < n; i++) {
         indexes.push(i);
@@ -99,7 +98,7 @@ function combine(list: string[], n: number): string[][] {
 
     while (indexes[0] + n <= len) {
         while (indexes[lastPos] < len) {
-            result.push(indexes.map(i => list[i]));
+            yield indexes.map(i => list[i])
             indexes[lastPos]++;
         }
 
@@ -114,8 +113,6 @@ function combine(list: string[], n: number): string[][] {
             }
         }
     }
-
-    return result;
 }
 
 function alnumToCoordinate(alnum: string): Coordinate {
@@ -135,14 +132,16 @@ function coordinatesToRect(cs: Coordinate[]): Rect {
 }
 
 function calcMinRects(n: number, blacks: string[]): Rect[] {
-    const combinations = combine(blacks, n);
-    const rects = combinations.map(combi => {
+    const rects = [];
+    const _blacks = blacks.map(alnumToCoordinate);
+    for (const combi of combine(blacks, n)) {
         const coordinates = combi.map(alnumToCoordinate);
         const rect = coordinatesToRect(coordinates);
-        return rect;
-    });
-    const coordinates = blacks.map(alnumToCoordinate);
-    return rects.filter(rect => rect.count(coordinates) === n);
+        if (rect.count(_blacks) === n) {
+            rects.push(rect);
+        }
+    }
+    return rects;
 }
 
 function calcMinMaxAreas(n: number, blacks: string[]): string {
