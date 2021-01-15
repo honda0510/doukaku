@@ -2,7 +2,7 @@
 // http://nabetani.sakura.ne.jp/hena/ord3ynode/
 
 // 実行方法
-// tsc q3.ts && node q3.js
+// tsc q3.ts && npm test test/q3.js
 
 const MAP = {
     'AB': {'r': 'E', 'l': 'C', 'b': 'A'},
@@ -40,43 +40,4 @@ function route(instructions: string): string {
     return paths.join('');
 }
 
-function test(input: string, expected: string) {
-    const actual = route(input);
-    if (expected === actual) {
-        console.log(`"${input}" got a success`);
-    } else {
-        console.log(`"${input}" expects "${expected}", but "${actual}"`);    
-    }
-}
-
-/*0*/ test("b", "AB")
-/*1*/ test("l", "AD")
-/*2*/ test("r", "AC")
-/*3*/ test("bbb", "ABAB")
-/*4*/ test("rrr", "ACBA")
-/*5*/ test("blll", "ABCAB")
-/*6*/ test("llll", "ADEBA")
-/*7*/ test("rbrl", "ACADE")
-/*8*/ test("brrrr", "ABEDAB")
-/*9*/ test("llrrr", "ADEFDE")
-/*10*/ test("lrlll", "ADFEDF")
-/*11*/ test("lrrrr", "ADFCAD")
-/*12*/ test("rllll", "ACFDAC")
-/*13*/ test("blrrrr", "ABCFEBC")
-/*14*/ test("brllll", "ABEFCBE")
-/*15*/ test("bbrllrrr", "ABACFDEFD")
-/*16*/ test("rrrrblll", "ACBACABCA")
-/*17*/ test("llrlrrbrb", "ADEFCADABA")
-/*18*/ test("rrrbrllrr", "ACBABEFCAD")
-/*19*/ test("llrllblrll", "ADEFCBCADEB")
-/*20*/ test("lrrlllrbrl", "ADFCBEFDFCB")
-/*21*/ test("lllrbrrlbrl", "ADEBCBACFCAB")
-/*22*/ test("rrrrrrlrbrl", "ACBACBADFDEB")
-/*23*/ test("lbrbbrbrbbrr", "ADABABEBCBCFE")
-/*24*/ test("rrrrlbrblllr", "ACBACFCACFDAB")
-/*25*/ test("lbbrblrlrlbll", "ADADFDABCFDFED")
-/*26*/ test("rrbbrlrlrblrl", "ACBCBADFEBEFDA")
-/*27*/ test("blrllblbrrrrll", "ABCFDADEDABEDFE")
-/*28*/ test("blrllrlbllrrbr", "ABCFDABCBEFDEDA")
-/*29*/ test("lbrbbrllllrblrr", "ADABABEFCBEDEBCF")
-/*30*/ test("rrrrbllrlrbrbrr", "ACBACABCFDEDADFC")
+module.exports = route;
