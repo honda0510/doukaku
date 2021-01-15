@@ -1,0 +1,21 @@
+{
+  "name": "doukaku",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honda0510/doukaku.git"
+  },
+  "author": "honda0510",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.14.20",
+    "mocha": "^8.2.1"
+  }
+}
