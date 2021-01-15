@@ -2,7 +2,7 @@
 // http://nabetani.sakura.ne.jp/hena/ord5dahimi/
 
 // 実行方法
-// tsc q5.ts --lib es2017,dom && node q5.js
+// tsc q5.ts && node q5.js
 
 function split(text: string): string[] {
     const result: string[] = [];

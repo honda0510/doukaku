@@ -2,7 +2,7 @@
 // http://nabetani.sakura.ne.jp/hena/ord9busfare/
 
 // 実行方法
-// tsc q9.ts --lib es2017,dom && node q9.js
+// tsc q9.ts && node q9.js
 
 function half(num: number): number {
     return Math.ceil(num / 2 / 10) * 10;

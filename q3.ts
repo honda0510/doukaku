@@ -2,7 +2,7 @@
 // http://nabetani.sakura.ne.jp/hena/ord3ynode/
 
 // 実行方法
-// tsc q3.ts --lib es2017,dom && node q3.js
+// tsc q3.ts && node q3.js
 
 const MAP = {
     'AB': {'r': 'E', 'l': 'C', 'b': 'A'},
