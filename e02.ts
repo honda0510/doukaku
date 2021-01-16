@@ -98,7 +98,7 @@ function* combine(list: string[], n: number) {
 
     while (indexes[0] + n <= len) {
         while (indexes[lastPos] < len) {
-            yield indexes.map(i => list[i])
+            yield indexes.map(i => list[i]);
             indexes[lastPos]++;
         }
 
