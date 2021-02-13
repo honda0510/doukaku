@@ -17,11 +17,11 @@ const BRANCHES = [
 ];
 
 class Truck {
-    courses: number[];
+    courses: number[][][];
     len: number;
 
     constructor(input: string) {
-        this.courses = input.split('').map(n => parseInt(n) - 1);
+        this.courses = input.split('').map(n => BRANCHES[parseInt(n) - 1]);
         this.len = this.courses.length;
     }
 
@@ -29,8 +29,7 @@ class Truck {
         if (i >= this.len) {
             return true;
         }
-        const course = this.courses[i];
-        const lines = BRANCHES[course][line];
+        const lines = this.courses[i][line];
         return lines.some(line2 => this.goDown(line2, i + 1));
     }
 }
