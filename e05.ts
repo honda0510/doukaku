@@ -34,7 +34,7 @@ class Truck {
     }
 }
 
-function goDown(input) {
+function goDown(input: string) {
     const truck = new Truck(input);
     const list = ['a', 'b', 'c'].reduce((list, sign, i) => {
         if (truck.goDown(i)) {
