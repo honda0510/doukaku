@@ -1,5 +1,5 @@
 const assert = require('assert');
-const calcTotalFare = require('../q9.js');
+const calcTotalFare = require('../q09.js');
 const testData = [
     /*0*/ ["210:Cn,In,Iw,Ap,Iw", "170"],
     /*1*/ ["220:Cp,In", "110"],

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {play, sort} = require('../q5.js');
+const {play, sort} = require('../q05.js');
 const testData = [
     /*#1*/ ["DJ,", "-"],
     /*#2*/ ["H7,HK", "HK"],
