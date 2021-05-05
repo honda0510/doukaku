@@ -1,3 +1,6 @@
+# ポーカーの残り＋ 〜 横へな 2013.5.10 の参考問題
+# http://nabetani.sakura.ne.jp/hena/ord10pokarest/
+
 import re
 
 def poker(text):

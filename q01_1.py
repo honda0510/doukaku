@@ -1,3 +1,6 @@
+# ポーカー
+# https://qiita.com/Nabetani/items/cbc3af152ee3f50a822f
+
 import re
 
 def poker(text):
